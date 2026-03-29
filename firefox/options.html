@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 480px; margin: 0 auto; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+    h1 { font-size: 18px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+    h1 img { width: 28px; height: 28px; border-radius: 6px; }
+    .subtitle { font-size: 12px; color: #64748b; margin-bottom: 20px; }
+    .section { margin-bottom: 20px; }
+    .section h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 10px; font-weight: 600; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 13px; color: #cbd5e1; margin-bottom: 4px; font-weight: 500; }
+    .field .hint { font-size: 11px; color: #64748b; margin-top: 2px; }
+    .field input, .field select {
+      width: 100%; padding: 8px 10px; border: 1px solid #334155; border-radius: 6px;
+      background: #1e293b; color: #e2e8f0; font-size: 13px; outline: none;
+    }
+    .field input:focus, .field select:focus { border-color: #ea8f10; }
+    .toggle { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; }
+    .toggle label { font-size: 13px; color: #cbd5e1; }
+    .switch { position: relative; width: 36px; height: 20px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch .slider { position: absolute; inset: 0; background: #334155; border-radius: 20px; cursor: pointer; transition: 0.2s; }
+    .switch .slider::before { content: ""; position: absolute; width: 16px; height: 16px; left: 2px; bottom: 2px; background: #94a3b8; border-radius: 50%; transition: 0.2s; }
+    .switch input:checked + .slider { background: #ea8f10; }
+    .switch input:checked + .slider::before { transform: translateX(16px); background: #0f172a; }
+    .btn { display: inline-block; padding: 10px 20px; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.15s; }
+    .btn-primary { background: #ea8f10; color: #0f172a; }
+    .btn-primary:hover { background: #f59e0b; }
+    .btn-danger { background: #1e293b; color: #f87171; margin-left: 8px; }
+    .btn-danger:hover { background: #7f1d1d; color: #fca5a5; }
+    .actions { display: flex; align-items: center; gap: 8px; margin-top: 20px; }
+    .saved { color: #4ade80; font-size: 13px; display: none; margin-left: 12px; }
+    .saved.show { display: inline; }
+    hr { border: none; border-top: 1px solid #1e293b; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1><img src="icons/icon48.png" alt="">PasteFox Settings</h1>
+  <p class="subtitle">Configure your PasteFox extension</p>
+
+  <div class="section">
+    <h2>Authentication</h2>
+    <div class="field">
+      <label>API Key</label>
+      <input type="password" id="apiKey" placeholder="pk_...">
+      <p class="hint">Get your key from <a href="https://pastefox.com/dashboard/api-keys" target="_blank" style="color:#ea8f10">Dashboard &gt; API Keys</a></p>
+    </div>
+    <div class="field">
+      <label>Instance URL</label>
+      <input type="url" id="instanceUrl" placeholder="https://pastefox.com">
+      <p class="hint">Use your custom domain or leave default</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Defaults</h2>
+    <div class="field">
+      <label>Default Visibility</label>
+      <select id="defaultVisibility">
+        <option value="PUBLIC">Public</option>
+        <option value="UNLISTED">Unlisted</option>
+        <option value="PRIVATE">Private</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Default Expiration</label>
+      <select id="defaultExpiration">
+        <option value="never">Never</option>
+        <option value="10m">10 minutes</option>
+        <option value="1h">1 hour</option>
+        <option value="1d">1 day</option>
+        <option value="7d">7 days</option>
+        <option value="30d">30 days</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Behavior</h2>
+    <div class="toggle">
+      <label>Open paste in new tab after creation</label>
+      <label class="switch"><input type="checkbox" id="openInNewTab"><span class="slider"></span></label>
+    </div>
+    <div class="toggle">
+      <label>Copy URL to clipboard</label>
+      <label class="switch"><input type="checkbox" id="copyToClipboard"><span class="slider"></span></label>
+    </div>
+    <div class="toggle">
+      <label>Show notifications</label>
+      <label class="switch"><input type="checkbox" id="notifications"><span class="slider"></span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="btn-save">Save Settings</button>
+    <button class="btn btn-danger" id="btn-clear">Clear API Key</button>
+    <span class="saved" id="saved">Saved!</span>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

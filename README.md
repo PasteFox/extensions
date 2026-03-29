@@ -20,8 +20,10 @@
 |-----------|----------|--------|---------|
 | [VS Code / Kiro](./vscode) | VS Code, Kiro, Cursor | ✅ Published | [Open VSX](https://open-vsx.org/extension/pastefox/pastefox) |
 | [Chrome](./chrome) | Chrome, Edge, Brave | ✅ Ready | [Load unpacked](#chrome) |
+| [Firefox](./firefox) | Firefox | ✅ Ready | [Load temporary](#firefox) |
 | [IntelliJ](./intellij) | IntelliJ, WebStorm, PyCharm, GoLand | ✅ Ready | [Build from source](#intellij) |
 | [CLI](./cli) | Terminal (any OS) | ✅ Ready | `npm i -g pastefox-cli` |
+| [GitHub Action](./github-action) | GitHub Actions | ✅ Ready | [Usage](#github-action) |
 
 ---
 
@@ -59,6 +61,17 @@ Plugin ZIP will be in `build/distributions/`. Install via Settings → Plugins �
 
 → [Full documentation](./intellij/README.md)
 
+## Firefox
+
+Same features as the Chrome extension, built for Firefox. Right-click selected text to share, or use the popup.
+
+**Install locally:**
+1. Go to `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on"
+3. Select `manifest.json` from the `firefox/` folder
+
+→ [Full documentation](./firefox/README.md)
+
 ## CLI
 
 Share pastes from your terminal. Pipe content, upload files, list and manage pastes.
@@ -74,6 +87,21 @@ pastefox get abc123 > output.py
 ```
 
 → [Full documentation](./cli/README.md)
+
+## GitHub Action
+
+Create pastes from your CI/CD workflows. Share build logs, test reports, or any file.
+
+```yaml
+- uses: PasteFox/extensions/github-action@main
+  with:
+    api-key: ${{ secrets.PASTEFOX_API_KEY }}
+    file: build.log
+    title: "Build Log"
+    expires: 7d
+```
+
+→ [Full documentation](./github-action/README.md)
 
 ---
 

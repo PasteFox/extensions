@@ -1,0 +1,48 @@
+name: "PasteFox Paste"
+description: "Create a paste on PasteFox from your GitHub Actions workflow"
+author: "PasteFox"
+branding:
+  icon: "upload-cloud"
+  color: "orange"
+
+inputs:
+  api-key:
+    description: "PasteFox API key"
+    required: true
+  content:
+    description: "Content to paste (use this OR file)"
+    required: false
+  file:
+    description: "Path to file to paste (use this OR content)"
+    required: false
+  title:
+    description: "Paste title"
+    required: false
+    default: ""
+  visibility:
+    description: "Paste visibility (PUBLIC, UNLISTED, PRIVATE)"
+    required: false
+    default: "UNLISTED"
+  language:
+    description: "Language for syntax highlighting"
+    required: false
+  expires:
+    description: "Expiration (never, 10m, 1h, 1d, 7d, 30d)"
+    required: false
+    default: "never"
+  instance-url:
+    description: "PasteFox instance URL"
+    required: false
+    default: "https://pastefox.com"
+
+outputs:
+  url:
+    description: "URL of the created paste"
+  slug:
+    description: "Slug of the created paste"
+  id:
+    description: "ID of the created paste"
+
+runs:
+  using: "node20"
+  main: "index.mjs"

@@ -11,8 +11,10 @@ body:
       options:
         - VS Code / Kiro
         - Chrome
+        - Firefox
         - IntelliJ / JetBrains
         - CLI
+        - GitHub Action
         - All extensions
         - New extension (specify below)
     validations:

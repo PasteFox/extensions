@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 360px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+    .header { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #1e293b; }
+    .header img { width: 28px; height: 28px; border-radius: 6px; }
+    .header h1 { font-size: 15px; font-weight: 700; }
+    .header .version { font-size: 10px; color: #64748b; margin-left: auto; }
+    .no-key { padding: 24px 16px; text-align: center; }
+    .no-key p { font-size: 13px; color: #94a3b8; margin-bottom: 12px; }
+    .btn { display: block; width: 100%; padding: 10px; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+    .btn-primary { background: #ea8f10; color: #0f172a; }
+    .btn-primary:hover { background: #f59e0b; }
+    .btn-secondary { background: #1e293b; color: #e2e8f0; margin-top: 8px; }
+    .btn-secondary:hover { background: #334155; }
+    .form { padding: 14px 16px; }
+    .field { margin-bottom: 10px; }
+    .field label { display: block; font-size: 11px; color: #94a3b8; margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+    .field textarea, .field input, .field select {
+      width: 100%; padding: 8px 10px; border: 1px solid #334155; border-radius: 6px;
+      background: #1e293b; color: #e2e8f0; font-size: 13px; font-family: inherit; outline: none;
+    }
+    .field textarea { height: 120px; resize: vertical; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
+    .field textarea:focus, .field input:focus, .field select:focus { border-color: #ea8f10; }
+    .row { display: flex; gap: 8px; }
+    .row .field { flex: 1; }
+    .result { padding: 14px 16px; text-align: center; }
+    .result.success { color: #4ade80; }
+    .result.error { color: #f87171; }
+    .result a { color: #ea8f10; text-decoration: none; font-size: 13px; word-break: break-all; }
+    .result a:hover { text-decoration: underline; }
+    .result .slug { font-family: monospace; font-size: 12px; background: #1e293b; padding: 6px 10px; border-radius: 6px; margin-top: 8px; display: block; }
+    .footer { padding: 10px 16px; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
+    .footer a { font-size: 11px; color: #64748b; text-decoration: none; }
+    .footer a:hover { color: #ea8f10; }
+    .loading { display: none; padding: 24px; text-align: center; color: #94a3b8; font-size: 13px; }
+    .loading.active { display: block; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon48.png" alt="PasteFox">
+    <h1>PasteFox</h1>
+    <span class="version">v1.0.0</span>
+  </div>
+
+  <div id="no-key" class="no-key hidden">
+    <p>Set your API key to start sharing code.</p>
+    <button class="btn btn-primary" id="btn-settings">Set API Key</button>
+  </div>
+
+  <div id="form" class="form hidden">
+    <div class="field">
+      <label>Content</label>
+      <textarea id="content" placeholder="Paste or type your code here..."></textarea>
+    </div>
+    <div class="field">
+      <label>Title</label>
+      <input type="text" id="title" placeholder="Optional title" maxlength="100">
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Visibility</label>
+        <select id="visibility">
+          <option value="PUBLIC">Public</option>
+          <option value="UNLISTED" selected>Unlisted</option>
+          <option value="PRIVATE">Private</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Expires</label>
+        <select id="expiration">
+          <option value="never">Never</option>
+          <option value="10m">10 min</option>
+          <option value="1h">1 hour</option>
+          <option value="1d">1 day</option>
+          <option value="7d">7 days</option>
+          <option value="30d">30 days</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="btn-create">Create Paste</button>
+    <button class="btn btn-secondary" id="btn-from-page">Paste from Current Page</button>
+  </div>
+
+  <div id="loading" class="loading">Creating paste...</div>
+
+  <div id="result" class="result hidden"></div>
+
+  <div class="footer">
+    <a href="#" id="btn-options">Settings</a>
+    <a href="https://pastefox.com" target="_blank">pastefox.com</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

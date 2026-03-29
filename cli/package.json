@@ -1,0 +1,27 @@
+{
+  "name": "pastefox-cli",
+  "version": "1.0.0",
+  "description": "Share code and text snippets to PasteFox from the command line",
+  "bin": {
+    "pastefox": "./bin/pastefox.mjs",
+    "pfx": "./bin/pastefox.mjs"
+  },
+  "type": "module",
+  "keywords": ["pastefox", "pastebin", "cli", "code-sharing", "paste", "snippet"],
+  "author": "PasteFox <support@pastefox.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PasteFox/extensions",
+    "directory": "cli"
+  },
+  "homepage": "https://pastefox.com",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ]
+}

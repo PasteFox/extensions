@@ -21,6 +21,7 @@
 | [VS Code / Kiro](./vscode) | VS Code, Kiro, Cursor | ✅ Published | [Open VSX](https://open-vsx.org/extension/pastefox/pastefox) |
 | [Chrome](./chrome) | Chrome, Edge, Brave | ✅ Ready | [Load unpacked](#chrome) |
 | [IntelliJ](./intellij) | IntelliJ, WebStorm, PyCharm, GoLand | ✅ Ready | [Build from source](#intellij) |
+| [CLI](./cli) | Terminal (any OS) | ✅ Ready | `npm i -g pastefox-cli` |
 
 ---
 
@@ -57,6 +58,22 @@ cd intellij
 Plugin ZIP will be in `build/distributions/`. Install via Settings → Plugins → Install from Disk.
 
 → [Full documentation](./intellij/README.md)
+
+## CLI
+
+Share pastes from your terminal. Pipe content, upload files, list and manage pastes.
+
+```bash
+npm install -g pastefox-cli
+
+pastefox login pk_your_key
+pastefox create myfile.py
+cat error.log | pastefox create --title "Logs" --expires 1h
+pastefox list
+pastefox get abc123 > output.py
+```
+
+→ [Full documentation](./cli/README.md)
 
 ---
 

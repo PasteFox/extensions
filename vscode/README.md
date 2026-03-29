@@ -64,8 +64,10 @@ Share code snippets directly from your editor to PasteFox.
 ## Other Extensions
 
 - [Chrome Extension](../chrome) — share from your browser
+- [Firefox Extension](../firefox) — share from Firefox
 - [IntelliJ Plugin](../intellij) — share from JetBrains IDEs
 - [CLI](../cli) — share from the terminal
+- [GitHub Action](../github-action) — share from CI/CD workflows
 
 ## License
 

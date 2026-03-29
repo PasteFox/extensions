@@ -87,8 +87,10 @@ Settings stored in `~/.pastefox/config.json`. Environment variables:
 ## Other Extensions
 
 - [VS Code / Kiro](../vscode) — share from your editor
-- [Chrome Extension](../chrome) — share from your browser
+- [Chrome Extension](../chrome) — share from Chrome
+- [Firefox Extension](../firefox) — share from Firefox
 - [IntelliJ Plugin](../intellij) — share from JetBrains IDEs
+- [GitHub Action](../github-action) — share from CI/CD workflows
 
 ## License
 

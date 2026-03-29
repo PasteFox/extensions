@@ -57,10 +57,16 @@ $("btn-create").addEventListener("click", async () => {
 
   if (result.success) {
     $("result").className = "result success";
-    $("result").innerHTML = `
-      <p>Paste created!</p>
-      <a href="${result.url}" target="_blank" class="slug">${result.url}</a>
-    `;
+    $("result").textContent = "";
+    const p = document.createElement("p");
+    p.textContent = "Paste created!";
+    const a = document.createElement("a");
+    a.href = result.url;
+    a.target = "_blank";
+    a.className = "slug";
+    a.textContent = result.url;
+    $("result").appendChild(p);
+    $("result").appendChild(a);
 
     // Copy to clipboard
     try {
@@ -75,7 +81,7 @@ $("btn-create").addEventListener("click", async () => {
     } catch { /* clipboard failed */ }
   } else {
     $("result").className = "result error";
-    $("result").innerHTML = `<p>${result.error}</p>`;
+    $("result").textContent = result.error || "Failed to create paste";
     setTimeout(() => {
       $("result").classList.add("hidden");
       $("form").classList.remove("hidden");

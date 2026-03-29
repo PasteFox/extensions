@@ -64,8 +64,10 @@ Click "Settings" in the popup footer, or right-click the PasteFox icon → Optio
 ## Other Extensions
 
 - [VS Code / Kiro](../vscode) — share from your editor
+- [Firefox Extension](../firefox) — share from Firefox
 - [IntelliJ Plugin](../intellij) — share from JetBrains IDEs
 - [CLI](../cli) — share from the terminal
+- [GitHub Action](../github-action) — share from CI/CD workflows
 
 ## License
 

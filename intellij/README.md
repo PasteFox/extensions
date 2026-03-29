@@ -56,8 +56,10 @@ Settings → Tools → PasteFox:
 ## Other Extensions
 
 - [VS Code / Kiro](../vscode) — share from VS Code
-- [Chrome Extension](../chrome) — share from your browser
+- [Chrome Extension](../chrome) — share from Chrome
+- [Firefox Extension](../firefox) — share from Firefox
 - [CLI](../cli) — share from the terminal
+- [GitHub Action](../github-action) — share from CI/CD workflows
 
 ## License
 

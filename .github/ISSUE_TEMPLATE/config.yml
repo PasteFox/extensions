@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: PasteFox Website
+    url: https://pastefox.com
+    about: Visit PasteFox
+  - name: API Documentation
+    url: https://pastefox.com/docs/api
+    about: PasteFox API docs
+  - name: Support
+    url: https://pastefox.com/support
+    about: Contact PasteFox support

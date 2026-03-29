@@ -486,9 +486,9 @@ export function activate(ctx: vscode.ExtensionContext) {
     vscode.commands.registerCommand("pastefox.setInstance", async () => {
       const cfg = getConfig();
       const url = await vscode.window.showInputBox({
-        prompt: "Enter your PasteFox instance URL",
+        prompt: "Enter PasteFox URL or your custom domain",
         value: cfg.instanceUrl,
-        placeHolder: "https://pastefox.com",
+        placeHolder: "https://pastefox.com or https://paste.yourdomain.com",
         validateInput: (v) => { try { new URL(v); return null; } catch { return "Invalid URL"; } },
       });
       if (!url) return;

@@ -27,7 +27,7 @@
       { "command": "pastefox.deletePaste", "title": "PasteFox: Delete Paste" },
       { "command": "pastefox.setApiKey", "title": "PasteFox: Set API Key" },
       { "command": "pastefox.removeApiKey", "title": "PasteFox: Remove API Key" },
-      { "command": "pastefox.setInstance", "title": "PasteFox: Set Instance URL" }
+      { "command": "pastefox.setInstance", "title": "PasteFox: Set Instance URL (Custom Domain)" }
     ],
     "keybindings": [
       {
@@ -52,7 +52,7 @@
         "pastefox.instanceUrl": {
           "type": "string",
           "default": "https://pastefox.com",
-          "description": "PasteFox instance URL (no trailing slash)",
+          "description": "PasteFox URL or your custom domain (no trailing slash)",
           "order": 1
         },
         "pastefox.defaultVisibility": {

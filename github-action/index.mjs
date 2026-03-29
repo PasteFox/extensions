@@ -2,7 +2,11 @@ import { readFileSync, existsSync, appendFileSync } from "fs";
 import { extname, basename } from "path";
 
 // GitHub Actions core helpers (no dependencies needed)
-const getInput = (name) => process.env[`INPUT_${name.toUpperCase().replace(/-/g, "_")}`] || "";
+const getInput = (name) => {
+  // GitHub Actions sets INPUT_<NAME> with uppercase and hyphens replaced by underscores
+  const key = `INPUT_${name.toUpperCase().replace(/-/g, "_")}`;
+  return process.env[key] || "";
+};
 const setOutput = (name, value) => {
   process.stdout.write(`::set-output name=${name}::${value}\n`);
   if (process.env.GITHUB_OUTPUT) {
@@ -37,7 +41,11 @@ async function run() {
   const expires = getInput("expires") || "never";
   const instanceUrl = (getInput("instance-url") || "https://pastefox.com").replace(/\/$/, "");
 
-  if (!apiKey) setFailed("api-key is required");
+  if (!apiKey) {
+    info(`Debug: INPUT_API_KEY="${process.env.INPUT_API_KEY ? "set" : "empty"}"`);
+    info(`Debug: INPUT_API-KEY="${process.env["INPUT_API-KEY"] ? "set" : "empty"}"`);
+    setFailed("api-key is required. Make sure PASTEFOX_API_KEY is set as a repository secret.");
+  }
 
   // Get content from input or file
   let content = contentInput;

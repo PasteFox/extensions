@@ -1,6 +1,12 @@
 # Changelog
 
-## 1.1.0
+## 1.1.2
+
+- API key hint in settings UI with link to dashboard
+- API key stored securely in VS Code's secret storage
+- Improved error messages
+
+## 1.1.1
 
 - Quick Paste command (no prompts, uses all defaults)
 - Upload file from explorer sidebar (right-click)

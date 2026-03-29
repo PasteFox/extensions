@@ -2,7 +2,7 @@
   "name": "pastefox",
   "displayName": "PasteFox",
   "description": "Share code snippets directly from your editor to PasteFox",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "publisher": "pastefox",
   "icon": "icon.png",
   "engines": {
@@ -54,6 +54,11 @@
     "configuration": {
       "title": "PasteFox",
       "properties": {
+        "pastefox.apiKey": {
+          "type": "null",
+          "markdownDescription": "Use the command `PasteFox: Set API Key` (Ctrl+Shift+P) to configure your API key securely. Get one at [pastefox.com/dashboard/api-keys](https://pastefox.com/dashboard/api-keys).",
+          "order": 0
+        },
         "pastefox.instanceUrl": {
           "type": "string",
           "default": "https://pastefox.com",

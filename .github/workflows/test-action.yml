@@ -1,0 +1,28 @@
+name: Test PasteFox Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create test file
+        run: echo "Hello from GitHub Actions test" > test.txt
+
+      - name: Test PasteFox Action
+        id: paste
+        uses: ./github-action
+        with:
+          api-key: ${{ secrets.PASTEFOX_API_KEY }}
+          file: test.txt
+          title: "GitHub Action Test"
+          visibility: UNLISTED
+          expires: 1h
+
+      - name: Show result
+        run: |
+          echo "URL: ${{ steps.paste.outputs.url }}"
+          echo "Slug: ${{ steps.paste.outputs.slug }}"

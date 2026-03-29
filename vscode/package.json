@@ -2,7 +2,7 @@
   "name": "pastefox",
   "displayName": "PasteFox",
   "description": "Share code snippets directly from your editor to PasteFox",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "pastefox",
   "icon": "icon.png",
   "engines": {

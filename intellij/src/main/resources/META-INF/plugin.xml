@@ -1,0 +1,45 @@
+<idea-plugin>
+    <id>com.pastefox.plugin</id>
+    <name>PasteFox</name>
+    <vendor email="info@pastefox.com" url="https://pastefox.com">PasteFox</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.pastefox.settings.PasteFoxConfigurable"
+                id="com.pastefox.settings"
+                displayName="PasteFox"/>
+        <applicationService
+                serviceImplementation="com.pastefox.settings.PasteFoxSettings"/>
+        <notificationGroup id="PasteFox" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <group id="PasteFox.Menu" text="PasteFox" popup="true" icon="/icons/pastefox.svg">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+            <action id="PasteFox.CreateFromSelection"
+                    class="com.pastefox.actions.CreatePasteAction"
+                    text="Share Selection to PasteFox"
+                    description="Create a paste from the selected text"
+                    icon="/icons/pastefox.svg">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift U"/>
+            </action>
+
+            <action id="PasteFox.CreateFromFile"
+                    class="com.pastefox.actions.CreatePasteFromFileAction"
+                    text="Share File to PasteFox"
+                    description="Create a paste from the entire file"
+                    icon="/icons/pastefox.svg"/>
+
+            <action id="PasteFox.OpenPaste"
+                    class="com.pastefox.actions.OpenPasteAction"
+                    text="Open Paste by Slug"
+                    description="Fetch a paste and open it in a new editor tab"
+                    icon="/icons/pastefox.svg"/>
+        </group>
+    </actions>
+</idea-plugin>

@@ -1,6 +1,8 @@
 # PasteFox CLI
 
-Share code and text snippets to [PasteFox](https://pastefox.com) from the command line.
+> Part of [PasteFox Extensions](https://github.com/PasteFox/extensions) · [pastefox.com](https://pastefox.com)
+
+Share code and text snippets to PasteFox from the command line.
 
 ## Install
 
@@ -25,16 +27,16 @@ Get your API key at [pastefox.com/dashboard/api-keys](https://pastefox.com/dashb
 ## Usage
 
 ```bash
-# Create paste from file
+# Create paste from file (language auto-detected)
 pastefox create main.py
 
 # Pipe content
 cat error.log | pastefox create --title "Error log" --expires 1h
 
-# Create private paste
+# Create private paste with expiration
 pastefox create secret.txt -v private -e 1d
 
-# Fetch paste content
+# Fetch paste content to stdout
 pastefox get abc123
 
 # Save paste to file
@@ -46,7 +48,7 @@ pastefox list
 # Delete a paste
 pastefox delete abc123
 
-# View/update config
+# View or update config
 pastefox config
 pastefox config --url https://paste.yourdomain.com
 pastefox config --visibility PRIVATE --expires 7d
@@ -56,12 +58,12 @@ pastefox config --visibility PRIVATE --expires 7d
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
-| `create <file>` | `c`, `new`, `push` | Create a paste from a file or stdin |
-| `get <slug>` | `g`, `fetch`, `read` | Fetch paste content (stdout) |
+| `create <file>` | `c`, `new`, `push` | Create paste from file or stdin |
+| `get <slug>` | `g`, `fetch`, `read` | Fetch paste content to stdout |
 | `list` | `ls`, `l` | List your pastes |
 | `delete <slug>` | `del`, `rm` | Delete a paste |
-| `login <key>` | `auth` | Save your API key |
-| `logout` | | Remove saved API key |
+| `login <key>` | `auth` | Save API key |
+| `logout` | | Remove API key |
 | `config` | `settings` | View or update settings |
 
 ## Create Options
@@ -70,21 +72,23 @@ pastefox config --visibility PRIVATE --expires 7d
 |------|-------|-------------|
 | `--title` | `-t` | Paste title |
 | `--visibility` | `-v` | PUBLIC, UNLISTED, or PRIVATE |
-| `--language` | `-l` | Language (auto-detected from extension) |
+| `--language` | `-l` | Language (auto-detected from file extension) |
 | `--expires` | `-e` | 10m, 1h, 1d, 7d, 30d, or never |
 
 ## Config
 
-Settings are stored in `~/.pastefox/config.json`. You can also use environment variables:
+Settings stored in `~/.pastefox/config.json`. Environment variables:
 
-- `PASTEFOX_API_KEY` — API key
-- `PASTEFOX_URL` — Instance URL
+| Variable | Description |
+|----------|-------------|
+| `PASTEFOX_API_KEY` | API key (overrides config file) |
+| `PASTEFOX_URL` | Instance URL (overrides config file) |
 
-## Custom Domains
+## Other Extensions
 
-```bash
-pastefox config --url https://paste.yourdomain.com
-```
+- [VS Code / Kiro](../vscode) — share from your editor
+- [Chrome Extension](../chrome) — share from your browser
+- [IntelliJ Plugin](../intellij) — share from JetBrains IDEs
 
 ## License
 

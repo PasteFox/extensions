@@ -12,6 +12,7 @@ body:
         - VS Code / Kiro
         - Chrome
         - IntelliJ / JetBrains
+        - CLI
     validations:
       required: true
 

@@ -12,6 +12,7 @@ body:
         - VS Code / Kiro
         - Chrome
         - IntelliJ / JetBrains
+        - CLI
         - All extensions
         - New extension (specify below)
     validations:

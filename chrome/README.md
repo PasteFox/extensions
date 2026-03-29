@@ -1,24 +1,31 @@
 # PasteFox for Chrome
 
-Share code and text snippets to [PasteFox](https://pastefox.com) directly from your browser.
+> Part of [PasteFox Extensions](https://github.com/PasteFox/extensions) · [pastefox.com](https://pastefox.com)
 
-## Features
+Share code and text snippets to PasteFox directly from your browser.
 
-- **Right-click to share** — select text on any page, right-click, share to PasteFox
-- **Popup editor** — paste or type code in the popup, set visibility and expiration
-- **Paste from page** — grab the entire page content with one click
-- **Auto-fill selection** — selected text is automatically loaded into the popup
-- **Visibility control** — Public, Unlisted, or Private per paste
-- **Expiration** — set auto-expiration (10m, 1h, 1d, 7d, 30d, or never)
-- **Clipboard copy** — paste URL is copied to clipboard automatically
-- **Custom domains** — works with PasteFox custom domains
+## Install
+
+1. Go to `chrome://extensions`
+2. Enable "Developer mode"
+3. Click "Load unpacked" → select the `chrome/` folder
 
 ## Setup
 
-1. Install the extension
-2. Click the PasteFox icon in the toolbar
-3. Go to Settings and enter your API key (from [Dashboard > API Keys](https://pastefox.com/dashboard/api-keys))
-4. Start sharing
+1. Click the PasteFox icon in the toolbar
+2. Click "Settings" in the footer
+3. Enter your API key from [pastefox.com/dashboard/api-keys](https://pastefox.com/dashboard/api-keys)
+
+## Features
+
+- **Right-click to share** — select text on any page → right-click → "Share to PasteFox"
+- **Popup editor** — paste or type code, set visibility and expiration
+- **Paste from page** — grab entire page content with one click
+- **Auto-fill selection** — selected text loads into the popup automatically
+- **Visibility control** — Public, Unlisted, or Private
+- **Expiration** — 10m, 1h, 1d, 7d, 30d, or never
+- **Clipboard copy** — URL copied automatically
+- **Custom domains** — works with PasteFox custom domains
 
 ## Usage
 
@@ -31,20 +38,35 @@ Share code and text snippets to [PasteFox](https://pastefox.com) directly from y
 ### From any page
 1. Select text on any webpage
 2. Right-click → "Share to PasteFox"
-3. Paste is created with your default settings
 
 ### Settings
-Right-click the PasteFox icon → Options, or click "Settings" in the popup footer.
+Click "Settings" in the popup footer, or right-click the PasteFox icon → Options.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| API Key | — | Your PasteFox API key |
+| Instance URL | `https://pastefox.com` | PasteFox URL or custom domain |
+| Default Visibility | Unlisted | PUBLIC, UNLISTED, or PRIVATE |
+| Default Expiration | Never | 10m, 1h, 1d, 7d, 30d, or never |
+| Open in new tab | On | Open paste URL after creation |
+| Copy to clipboard | On | Copy URL to clipboard |
+| Notifications | On | Show browser notifications |
 
 ## Permissions
 
-- **storage** — save your API key and settings
-- **contextMenus** — add "Share to PasteFox" to the right-click menu
-- **activeTab** — read selected text from the current page
+| Permission | Reason |
+|------------|--------|
+| `storage` | Save API key and settings |
+| `contextMenus` | "Share to PasteFox" in right-click menu |
+| `activeTab` | Read selected text from the current page |
+| `scripting` | Read page content when user clicks "Paste from Current Page" |
 
-## Development
+## Other Extensions
 
-Load as unpacked extension:
-1. Go to `chrome://extensions`
-2. Enable "Developer mode"
-3. Click "Load unpacked" and select the `chrome/` folder
+- [VS Code / Kiro](../vscode) — share from your editor
+- [IntelliJ Plugin](../intellij) — share from JetBrains IDEs
+- [CLI](../cli) — share from the terminal
+
+## License
+
+MIT

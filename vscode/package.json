@@ -1,0 +1,158 @@
+{
+  "name": "pastefox",
+  "displayName": "PasteFox",
+  "description": "Share code snippets directly from your editor to PasteFox",
+  "version": "1.1.0",
+  "publisher": "pastefox",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["paste", "pastebin", "share", "snippet", "code sharing", "pastefox"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PasteFox/PasteFox"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "pastefox.createPaste", "title": "PasteFox: Create Paste from Selection" },
+      { "command": "pastefox.createPasteFromFile", "title": "PasteFox: Create Paste from File" },
+      { "command": "pastefox.createPasteFromExplorer", "title": "PasteFox: Upload to PasteFox" },
+      { "command": "pastefox.createPasteQuick", "title": "PasteFox: Quick Paste (no prompts)" },
+      { "command": "pastefox.openPaste", "title": "PasteFox: Open Paste by Slug" },
+      { "command": "pastefox.listMyPastes", "title": "PasteFox: List My Pastes" },
+      { "command": "pastefox.deletePaste", "title": "PasteFox: Delete Paste" },
+      { "command": "pastefox.setApiKey", "title": "PasteFox: Set API Key" },
+      { "command": "pastefox.removeApiKey", "title": "PasteFox: Remove API Key" },
+      { "command": "pastefox.setInstance", "title": "PasteFox: Set Instance URL" }
+    ],
+    "keybindings": [
+      {
+        "command": "pastefox.createPasteQuick",
+        "key": "ctrl+shift+p ctrl+shift+u",
+        "mac": "cmd+shift+p cmd+shift+u",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "pastefox.createPaste", "when": "editorHasSelection", "group": "pastefox@1" },
+        { "command": "pastefox.createPasteFromFile", "group": "pastefox@2" }
+      ],
+      "explorer/context": [
+        { "command": "pastefox.createPasteFromExplorer", "group": "pastefox@1", "when": "!explorerResourceIsFolder" }
+      ]
+    },
+    "configuration": {
+      "title": "PasteFox",
+      "properties": {
+        "pastefox.instanceUrl": {
+          "type": "string",
+          "default": "https://pastefox.com",
+          "description": "PasteFox instance URL (no trailing slash)",
+          "order": 1
+        },
+        "pastefox.defaultVisibility": {
+          "type": "string",
+          "enum": ["PUBLIC", "UNLISTED", "PRIVATE"],
+          "enumDescriptions": [
+            "Visible to everyone and listed on explore",
+            "Accessible only via direct link",
+            "Only you can see it (requires API key)"
+          ],
+          "default": "UNLISTED",
+          "description": "Default visibility for new pastes",
+          "order": 2
+        },
+        "pastefox.defaultExpiration": {
+          "type": "string",
+          "enum": ["never", "10m", "1h", "1d", "7d", "30d"],
+          "enumDescriptions": [
+            "Never expires",
+            "10 minutes",
+            "1 hour",
+            "1 day",
+            "7 days",
+            "30 days"
+          ],
+          "default": "never",
+          "description": "Default expiration time for new pastes",
+          "order": 3
+        },
+        "pastefox.openInBrowser": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically open paste URL in browser after creation",
+          "order": 4
+        },
+        "pastefox.copyUrlToClipboard": {
+          "type": "boolean",
+          "default": true,
+          "description": "Copy paste URL to clipboard after creation",
+          "order": 5
+        },
+        "pastefox.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show PasteFox button in the status bar",
+          "order": 6
+        },
+        "pastefox.skipTitlePrompt": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip the title prompt and use the filename automatically",
+          "order": 7
+        },
+        "pastefox.skipVisibilityPrompt": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip the visibility prompt and use the default",
+          "order": 8
+        },
+        "pastefox.includeLineNumbers": {
+          "type": "boolean",
+          "default": false,
+          "description": "Prepend line numbers to pasted content",
+          "order": 9
+        },
+        "pastefox.appendFileInfo": {
+          "type": "boolean",
+          "default": false,
+          "description": "Append filename and line range as a comment at the top of the paste",
+          "order": 10
+        },
+        "pastefox.maxContentLength": {
+          "type": "number",
+          "default": 500000,
+          "description": "Maximum content length in characters (0 = unlimited)",
+          "order": 11
+        },
+        "pastefox.notificationStyle": {
+          "type": "string",
+          "enum": ["full", "minimal", "silent"],
+          "enumDescriptions": [
+            "Show notification with action buttons",
+            "Show brief notification, no buttons",
+            "No notification (URL still copied to clipboard)"
+          ],
+          "default": "full",
+          "description": "Notification style after creating a paste",
+          "order": 12
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "echo 'Run: npm run compile to build the extension'",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package --no-dependencies --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.0.0"
+  }
+}

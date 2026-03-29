@@ -14,7 +14,12 @@
   "main": "./out/extension.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PasteFox/PasteFox"
+    "url": "https://github.com/PasteFox/extensions",
+    "directory": "vscode"
+  },
+  "homepage": "https://pastefox.com",
+  "bugs": {
+    "url": "https://github.com/PasteFox/extensions/issues"
   },
   "contributes": {
     "commands": [

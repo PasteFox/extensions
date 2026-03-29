@@ -1,15 +1,12 @@
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, existsSync, appendFileSync } from "fs";
 import { extname, basename } from "path";
 
 // GitHub Actions core helpers (no dependencies needed)
 const getInput = (name) => process.env[`INPUT_${name.toUpperCase().replace(/-/g, "_")}`] || "";
 const setOutput = (name, value) => {
-  const delimiter = `ghadelimiter_${Date.now()}`;
   process.stdout.write(`::set-output name=${name}::${value}\n`);
-  // Also write to GITHUB_OUTPUT file if available
   if (process.env.GITHUB_OUTPUT) {
-    const fs = await import("fs");
-    fs.appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
+    appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
   }
 };
 const setFailed = (msg) => { process.stdout.write(`::error::${msg}\n`); process.exit(1); };
@@ -100,7 +97,6 @@ async function run() {
 
       // Write to job summary if available
       if (process.env.GITHUB_STEP_SUMMARY) {
-        const { appendFileSync } = await import("fs");
         appendFileSync(process.env.GITHUB_STEP_SUMMARY,
           `### 🦊 PasteFox Paste Created\n\n` +
           `| | |\n|---|---|\n` +

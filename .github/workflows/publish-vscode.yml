@@ -1,0 +1,46 @@
+name: Publish VS Code Extension
+
+on:
+  push:
+    tags:
+    - "vscode-v*"
+  workflow_dispatch:
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install dependencies
+      working-directory: vscode
+      run: npm install
+
+    - name: Compile
+      working-directory: vscode
+      run: npm run compile
+
+    - name: Package
+      working-directory: vscode
+      run: npx @vscode/vsce package --no-dependencies --allow-missing-repository
+
+    - name: Publish to VS Code Marketplace
+      working-directory: vscode
+      run: npx @vscode/vsce publish --no-dependencies --allow-missing-repository -p ${{ secrets.VSCE_TOKEN }}
+      continue-on-error: true
+
+    - name: Publish to Open VSX
+      working-directory: vscode
+      run: npx ovsx publish *.vsix -p ${{ secrets.OVSX_TOKEN }}
+      continue-on-error: true
+
+    - name: Upload VSIX artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: pastefox-vsix
+        path: vscode/*.vsix

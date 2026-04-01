@@ -1,5 +1,5 @@
-// Context menu setup
-chrome.runtime.onInstalled.addListener(() => {
+// Context menu setup + welcome page on install
+chrome.runtime.onInstalled.addListener(async (details) => {
   chrome.contextMenus.create({
     id: "pastefox-selection",
     title: "Share to PasteFox",
@@ -11,6 +11,16 @@ chrome.runtime.onInstalled.addListener(() => {
     title: "Share page content to PasteFox",
     contexts: ["page"],
   });
+
+  // Open welcome page on first install
+  if (details.reason === "install") {
+    const settings = await getSettings();
+    const baseUrl = settings.instanceUrl.replace(/\/$/, "");
+    chrome.tabs.create({
+      url: `${baseUrl}/extension/welcome?browser=firefox&token=pf-ext-installed`,
+      active: true,
+    });
+  }
 });
 
 // Handle context menu clicks
@@ -39,6 +49,10 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg.action === "getSettings") {
     getSettings().then(sendResponse);
     return true;
+  }
+  if (msg.action === "openSettings") {
+    chrome.runtime.openOptionsPage();
+    sendResponse({ success: true });
   }
 });
 

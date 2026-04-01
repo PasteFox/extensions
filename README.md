@@ -20,7 +20,7 @@
 |-----------|----------|--------|---------|
 | [VS Code / Kiro](./vscode) | VS Code, Kiro, Cursor | ✅ Published | [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=PasteFox.pastefox) · [Open VSX](https://open-vsx.org/extension/pastefox/pastefox) |
 | [Chrome](./chrome) | Chrome, Edge, Brave | ✅ Ready | [Load unpacked](#chrome) |
-| [Firefox](./firefox) | Firefox | ✅ Ready | [Load temporary](#firefox) |
+| [Firefox](./firefox) | Firefox | ✅ Published | [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/pastefox/) |
 | [IntelliJ](./intellij) | IntelliJ, WebStorm, PyCharm, GoLand | ✅ Ready | [Build from source](#intellij) |
 | [CLI](./cli) | Terminal (any OS) | ✅ Ready | `npm i -g pastefox-cli` |
 | [GitHub Action](./github-action) | GitHub Actions | ✅ Ready | [Usage](#github-action) |
@@ -65,7 +65,11 @@ Plugin ZIP will be in `build/distributions/`. Install via Settings → Plugins �
 
 Same features as the Chrome extension, built for Firefox. Right-click selected text to share, or use the popup.
 
-**Install locally:**
+**Install from Firefox Add-ons:**
+
+→ [addons.mozilla.org/firefox/addon/pastefox](https://addons.mozilla.org/en-US/firefox/addon/pastefox/)
+
+**Install locally (for testing):**
 1. Go to `about:debugging#/runtime/this-firefox`
 2. Click "Load Temporary Add-on"
 3. Select `manifest.json` from the `firefox/` folder

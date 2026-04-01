@@ -6,7 +6,9 @@ Share code and text snippets to PasteFox directly from Firefox.
 
 ## Install
 
-**Temporary (for testing):**
+- **Firefox Add-ons:** [addons.mozilla.org/firefox/addon/pastefox](https://addons.mozilla.org/en-US/firefox/addon/pastefox/)
+
+**Manual (for testing):**
 1. Go to `about:debugging#/runtime/this-firefox`
 2. Click "Load Temporary Add-on"
 3. Select `manifest.json` from the `firefox/` folder

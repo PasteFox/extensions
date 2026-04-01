@@ -18,7 +18,7 @@
 
 | Extension | Platform | Status | Install |
 |-----------|----------|--------|---------|
-| [VS Code / Kiro](./vscode) | VS Code, Kiro, Cursor | ✅ Published | [Open VSX](https://open-vsx.org/extension/pastefox/pastefox) |
+| [VS Code / Kiro](./vscode) | VS Code, Kiro, Cursor | ✅ Published | [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=PasteFox.pastefox) · [Open VSX](https://open-vsx.org/extension/pastefox/pastefox) |
 | [Chrome](./chrome) | Chrome, Edge, Brave | ✅ Ready | [Load unpacked](#chrome) |
 | [Firefox](./firefox) | Firefox | ✅ Ready | [Load temporary](#firefox) |
 | [IntelliJ](./intellij) | IntelliJ, WebStorm, PyCharm, GoLand | ✅ Ready | [Build from source](#intellij) |

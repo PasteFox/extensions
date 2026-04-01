@@ -6,6 +6,7 @@ Share code snippets directly from your editor to PasteFox.
 
 ## Install
 
+- **VS Marketplace:** [marketplace.visualstudio.com](https://marketplace.visualstudio.com/items?itemName=PasteFox.pastefox)
 - **Open VSX:** [open-vsx.org/extension/pastefox/pastefox](https://open-vsx.org/extension/pastefox/pastefox)
 - **Manual:** Download `.vsix` from [Releases](https://github.com/PasteFox/extensions/releases) → `Extensions: Install from VSIX`
 

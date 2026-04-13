@@ -19,7 +19,7 @@
 | Extension | Platform | Status | Install |
 |-----------|----------|--------|---------|
 | [VS Code / Kiro](./vscode) | VS Code, Kiro, Cursor | ✅ Published | [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=PasteFox.pastefox) · [Open VSX](https://open-vsx.org/extension/pastefox/pastefox) |
-| [Chrome](./chrome) | Chrome, Edge, Brave | ✅ Ready | [Load unpacked](#chrome) |
+| [Chrome](./chrome) | Chrome, Edge, Brave | ✅ Published | [Chrome Web Store](https://chromewebstore.google.com/detail/ancceemeendheffgnpklmpmdbdjmpagn) |
 | [Firefox](./firefox) | Firefox | ✅ Published | [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/pastefox/) |
 | [IntelliJ](./intellij) | IntelliJ, WebStorm, PyCharm, GoLand | ✅ Ready | [Build from source](#intellij) |
 | [CLI](./cli) | Terminal (any OS) | ✅ Ready | `npm i -g pastefox-cli` |
@@ -41,7 +41,11 @@ ext install pastefox.pastefox
 
 Right-click any selected text on a webpage to share it to PasteFox. Includes a popup editor with visibility and expiration controls.
 
-**Install locally:**
+**Install from Chrome Web Store:**
+
+→ [chromewebstore.google.com/detail/ancceemeendheffgnpklmpmdbdjmpagn](https://chromewebstore.google.com/detail/ancceemeendheffgnpklmpmdbdjmpagn)
+
+**Install locally (for development):**
 1. Go to `chrome://extensions`
 2. Enable "Developer mode"
 3. Click "Load unpacked" → select the `chrome/` folder
